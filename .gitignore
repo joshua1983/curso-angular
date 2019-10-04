@@ -61,3 +61,5 @@ typings/
 .next
 
 adminpro/package-lock.json
+
+.DS_Store
