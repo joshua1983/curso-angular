@@ -1,0 +1,17 @@
+{
+	"folders": [
+		{
+			"path": "adminpro"
+		},
+		{
+			"path": "backend"
+		},
+		{
+			"path": "clitest"
+		},
+		{
+			"path": "google-signin"
+		}
+	],
+	"settings": {}
+}
