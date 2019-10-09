@@ -41,7 +41,7 @@ app.post('/google', async (req,res) =>{
                             .catch( e => {
                                 return res.status(403).json({
                                     ok: false,
-                                    mensaje: 'token no valido'
+                                    mensaje: 'token no valido.'
                                 });
                             });
 
@@ -75,7 +75,8 @@ app.post('/google', async (req,res) =>{
                 });
             }
         }else{
-            // el usuario no existe hay que crearlo
+            // el usuario no existe hay que crearlo 
+
             var usuario = new Usuario();
             usuario.nombre = googleUser.nombre;
             usuario.email = googleUser.email;
@@ -84,26 +85,16 @@ app.post('/google', async (req,res) =>{
             usuario.password = ":)";
 
             usuario.save( (err, usuarioDB) =>{
-                var token = jwt.sign({
-                    usuario: usuarioDB
-                }, SEED, { expiresIn: 14400 });
+                var token = jwt.sign({ usuario: usuarioDB }, SEED, { expiresIn: 14400 });
 
                 res.status(200).json({
                     ok: true,
                     usuario: usuarioDB,
-                    id: usuarioDB._id,
                     token: token
                 });
-            } )
+            });
         }
     })
-
-
-    return res.status(200).json({
-        ok: true,
-        mensaje: 'respuesta ok',
-        googleUser: googleUser
-    });
 });
 
 

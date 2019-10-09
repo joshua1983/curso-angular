@@ -1,6 +1,7 @@
 var express = require('express');
 var app = express();
 var bcrypt = require('bcryptjs');
+var cors = require('cors');
 
 var mdAutenticacion = require('../middlewares/autenticacion');
 var Usuario = require('../models/usuario');
@@ -92,7 +93,7 @@ app.put('/:id', mdAutenticacion.verificaToken , (req, res) => {
 // Crear nuevo usuario
 // ============================
 
-app.post('/', mdAutenticacion.verificaToken , (req, res) => {
+app.post('/', cors(), (req, res) => {
     var body = req.body;
 
     var usuario = new Usuario({
